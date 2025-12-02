@@ -36,7 +36,7 @@ next.addEventListener("click", function () {
     var r5 = Math.floor(Math.random() * 255)
     var r6 = Math.floor(Math.random() * 255)
     
-    main.style.background = `linear-gradient(to right, rgb(${r1}, ${r2}, ${r3}), rgb(${r4}, ${r5}, ${r6}))`
+    main.style.background = `radial-gradient(rgb(${r1}, ${r2}, ${r3}), rgb(${r4}, ${r5}, ${r6}))`
     
     
 })
@@ -52,7 +52,7 @@ prev.addEventListener("click", function () {
     var r5 = Math.floor(Math.random() * 255)
     var r6 = Math.floor(Math.random() * 255)
 
-    main.style.background = `linear-gradient(to right, rgb(${r1}, ${r2}, ${r3}), rgb(${r4}, ${r5}, ${r6}))`
+    main.style.background = `radial-gradient( rgb(${r1}, ${r2}, ${r3}), rgb(${r4}, ${r5}, ${r6}))`
 
 
 
