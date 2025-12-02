@@ -22,18 +22,38 @@ prevBtn.addEventListener("click", function () {
 });
 
 
-var main =  document.querySelector("main")
+var main = document.querySelector("main")
 var prev = document.querySelector("#prevBtn")
 var next = document.querySelector("#nextBtn")
-next.addEventListener("click",function(){
-
-    var r1 = Math.floor(Math.random*255)
-    var r2 = Math.floor(Math.random*255)
-    var r3 = Math.floor(Math.random*255)
-
-    main.style.backgroundColor = `rgb(${r1},${r2},${r3})`
-    console.log("lickckck");
+next.addEventListener("click", function () {
+    main.style.background = "none"
+    
+    var r1 = Math.floor(Math.random() * 255)
+    var r2 = Math.floor(Math.random() * 255)
+    var r3 = Math.floor(Math.random() * 255)
+    
+    var r4 = Math.floor(Math.random() * 255)
+    var r5 = Math.floor(Math.random() * 255)
+    var r6 = Math.floor(Math.random() * 255)
+    
+    main.style.background = `linear-gradient(to right, rgb(${r1}, ${r2}, ${r3}), rgb(${r4}, ${r5}, ${r6}))`
+    
+    
+})
+prev.addEventListener("click", function () {
+    main.style.background = "none"
     
 
-  
+    var r1 = Math.floor(Math.random() * 255)
+    var r2 = Math.floor(Math.random() * 255)
+    var r3 = Math.floor(Math.random() * 255)
+
+    var r4 = Math.floor(Math.random() * 255)
+    var r5 = Math.floor(Math.random() * 255)
+    var r6 = Math.floor(Math.random() * 255)
+
+    main.style.background = `linear-gradient(to right, rgb(${r1}, ${r2}, ${r3}), rgb(${r4}, ${r5}, ${r6}))`
+
+
+
 })
