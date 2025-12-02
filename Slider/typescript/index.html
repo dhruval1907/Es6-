@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,42 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
 
+    <style>
+        main {
+            background: radial-gradient(rgba(16, 19, 20, 0.002), rgba(20, 156, 136, 0.592), rgb(42, 7, 37));
+            overflow: hidden;
+        }
+    </style>
 </head>
-<body>
-    
 
-    <main>
-        
+<body>
+
+    <main class="h-screen w-full flex items-center justify-center flex-col ">
+        <div class="card h-[70%] w-[80%] rounded-xl flex items-center justify-center "data-tilt>
+            <div class="w-[50%] h-screen flex flex-col items-center justify-center ">
+                <div class="w-[100%] h-[80%] overflow-hidden rounded-xl shadow-lg">
+                    <img id="galleryImage" class="w-full h-full object-cover transition-all duration-300" />
+                </div>
+
+                <div class="flex gap-4 mt-6">
+                    <button id="prevBtn" class="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600">
+                        Prev
+                    </button>
+
+                    <button id="nextBtn" class="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600">
+                        Next
+                    </button>
+                </div>
+            </div>
+        </div>
+
     </main>
+
+    <!-- <script type="text/javascript" src="vanilla-tilt.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+
+
+    <script src="./script.js"></script>
 </body>
+
 </html>
