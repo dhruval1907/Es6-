@@ -10,7 +10,7 @@
     <style>
         main {
             /* background-image: url(./source/Screenshot\ 2025-12-02\ 222449.png); */
-            background: conic-gradient(white, black, black, white);
+            background: conic-gradient(rgb(85, 78, 78), rgb(137, 128, 128), rgb(74, 65, 65), rgb(53, 52, 52));
         }
 
         .images::-webkit-scrollbar {
@@ -55,12 +55,22 @@
     <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
 
     <script>
-        var cont = document.querySelector(".card")
+        var cont = document.querySelector(".images")
         var nextbtn = document.querySelector(".next-btn")
         var prevbtn = document.querySelector(".prev-btn")
 
         cont.addEventListener("wheel",function(e){
             e.preventDefault()  
+            cont.scrollLeft += e.deltaY
+        })
+
+        nextbtn.addEventListener("click",function(){
+            cont.scrollLeft += 900
+            cont.style.scrollBehavior = "smooth"
+        })
+        prevbtn.addEventListener("click",function(){
+            cont.scrollLeft -= 900
+            cont.style.scrollBehavior = "smooth"
         })
 
     </script>
