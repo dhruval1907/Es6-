@@ -13,13 +13,16 @@
             background: radial-gradient(rgba(16, 19, 20, 0.002), rgba(20, 156, 136, 0.592), rgb(42, 7, 37));
             overflow: hidden;
         }
+        button{
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
 
     <main class="h-screen w-full flex items-center justify-center flex-col ">
-        <div class="card h-[70%] w-[80%] rounded-xl flex items-center justify-center " data-tilt>
+        <div class="card h-[70%] w-[80%] rounded-xl flex items-center justify-center " >
             <div class="w-[50%] h-screen flex flex-col items-center justify-center ">
                 <div class="w-[100%] h-[80%] overflow-hidden rounded-xl shadow-lg">
                     <img id="galleryImage" class="w-full h-full object-cover transition-all duration-300" />
@@ -39,9 +42,7 @@
 
     </main>
 
-    <!-- <script type="text/javascript" src="vanilla-tilt.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
-
+    
 
     <script src="./script.js"></script>
 </body>
