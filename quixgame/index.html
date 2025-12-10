@@ -1,40 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            width: 100vw;
+            background: conic-gradient(rgba(13, 82, 109, 0.168), rgb(36, 74, 77), rgba(255, 255, 255, 0.39));
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        .config-container {
+            text-align: center;
+            background-color: #fff;
+            width: 415px;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px grey;
+        }
+
+        .config-option button{
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: 500;
+            background-color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 1px solid rgb(36, 20, 23);
+        }
+        .config-option button:hover{
+            background-color: rgba(100, 148, 237, 0.729);
+            color: rgb(36, 47, 68)
+        }
+
+        .start-quiz-btn:active{
+            scale: 0.95;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <!-- quiz configrraion containeeeerrrrrrrrr -->
     <div class="config-container">
         <h2 class="config-title">Quiz configuartion</h2>
-    </div>
 
-    <div class="config-option">
-        <h4 class="option-tile">Select category</h4>
-        <div class="category-options">
-            <button class="category-option">Programming</button>
-            <button class="category-option">Geography</button>
-            <button class="category-option">Mathemetics</button>
-            <button class="category-option">Entertainent</button>
+        <div class="config-option">
+            <h4 class="option-tile" style="font-size: 1.31rem;">Select category</h4>
+            <div class="category-options" style="font-size: 25px;display: grid;gap: 15px;font-weight: 900 !important;grid-template-columns: repeat(2,1fr);">
+                <button class="category-option">Programming</button>
+                <button class="category-option">Geography</button>
+                <button class="category-option">Mathemetics</button>
+                <button class="category-option">Entertainent</button>
+            </div>
         </div>
-    </div>
 
-    <div class="config-option">
-        <h4 class="option-tile">No. of quesions</h4>
-        <div class="category-options">
-            <button class="category-option">5</button>
-            <button class="category-option">10</button>
-            <button class="category-option">15</button>
-            <button class="category-option">20</button>
+        <div class="config-option">
+            <h4 class="option-title" style="font-size: 18px;font-weight: 500;margin-bottom:20px ;margin-left: ;">No. of quesions
+            </h4>
+            <div class="category-options" style="display: flex;align-items: center;justify-content: center;
+            gap: 20px;">
+                <button class="category-option">5</button>
+                <button class="category-option">10</button>
+                <button class="category-option">15</button>
+                <button class="category-option">20</button>
+            </div>
         </div>
-    </div>
 
-    <button class="start-quiz-btn"></button>
+        <button class="start-quiz-btn" style="padding: 10px 20px;margin-top: 20px; font-size: 15px;border-radius: 10px;background-color: hsl(219, 79%, 66%);color: white;cursor: pointer;border: none;" >submit</button>
+    </div>
 
     <script>
-        
+
     </script>
 </body>
+
 </html>
