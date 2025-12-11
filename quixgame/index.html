@@ -218,16 +218,16 @@
     });
 
     ///// Quiz flow variables /////
-    let quizQuestions = []; // sliced array used in a run
+    let quizQuestions = []; 
     let currentIndex = 0;
     let score = 0;
 
     // Timer per question settings
-    const timePerQuestion = 15; // seconds
+    const timePerQuestion = 15; 
     let timeLeft = timePerQuestion;
     let perQuestionTimer = null;
 
-    ///// DOM refs /////
+    // DOM refs 
     const configPage = document.getElementById("configPage");
     const quizPage = document.getElementById("quizPage");
     const resultPage = document.getElementById("resultPage");
@@ -242,10 +242,8 @@
     const restartBtn = document.getElementById("restartBtn");
     const scoreText = document.getElementById("scoreText");
 
-    ///// Start Quiz /////
+    // Start Quiz 
     startBtn.addEventListener("click", () => {
-      // Prepare quizQuestions by slicing the global questions array.
-      // If selectedCount > available questions, clamp to questions.length
       const n = Math.min(selectedCount, questions.length);
       quizQuestions = questions.slice(0, n);
 
@@ -304,7 +302,7 @@
       }
     }
 
-    ///// Handle selecting an option (immediate evaluate + advance) /////
+    //  Handle selecting an option 
     function handleSelect(selectedIndex) {
       clearPerQuestionTimer();
 
@@ -313,7 +311,6 @@
         score++;
       }
 
-      // small visual feedback could be added; keeping simple per instructions
       // go to next question
       currentIndex++;
       if (currentIndex < quizQuestions.length) {
@@ -323,7 +320,7 @@
       }
     }
 
-    ///// Next button (acts as skip — advances without awarding points) /////
+    // Next button (acts as skip — advances without awarding points) 
     nextBtn.addEventListener("click", () => {
       // Skip current question
       clearPerQuestionTimer();
@@ -335,9 +332,8 @@
       }
     });
 
-    ///// When timer runs out for a question ///// 
+    //  When timer runs out for a question  
     function moveToNextOnTimeout() {
-      // do not increment score (time out -> incorrect)
       currentIndex++;
       if (currentIndex < quizQuestions.length) {
         loadQuestion();
@@ -346,7 +342,7 @@
       }
     }
 
-    ///// End quiz and show result ///// 
+    //  End quiz and show result  
     function endQuiz() {
       clearPerQuestionTimer();
       quizPage.style.display = "none";
@@ -355,13 +351,10 @@
     }
 
     restartBtn.addEventListener("click", () => {
-      // reload to reset everything
       location.reload();
     });
 
-    ///// Optionally start with configPage visible (already default) /////
 
-    // No auto-start. User must press Start Quiz.
   </script>
 
 </body>
