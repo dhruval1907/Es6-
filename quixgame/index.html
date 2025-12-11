@@ -26,10 +26,15 @@
 
     .card {
       width: 420px;
-      background: white;
+      background: transparent;
       border-radius: 12px;
       padding: 20px 30px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+      /* box-shadow: 10px 10px 10px rgb(255, 255, 255,0.3); */
+       box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.4),
+        0 -10px 25px rgba(255, 255, 255, 0.15),
+        10px 0 25px rgba(0, 0, 0, 0.3),
+        -10px 0 25px rgba(255, 255, 255, 0.2);
       text-align: left;
     }
 
@@ -129,9 +134,9 @@
 <body>
 
   <div id="configPage" class="card centered-card" style="text-align:center;">
-    <h2 style="font-size:26px; margin-bottom:8px;">Quiz Configuration</h2>
+    <h2 style="font-size:26px; margin-bottom:8px;color: rgba(255, 255, 255, 0.655); ">Quiz Configuration</h2>
 
-    <h3 class="section-title" style="margin-top:6px;">No. of Questions</h3>
+    <h3 class="section-title" style="margin-top:6px;color: antiquewhite;">No. of Questions</h3>
 
     <div class="count-row" id="countButtons" style="margin-bottom:22px;">
       <button class="btn-option count-btn" data-count="3">3</button>
