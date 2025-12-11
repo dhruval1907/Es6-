@@ -1,96 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Quiz Game — Single Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quiz Game — Single Page</title>
 
-<link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
 
-<style>
-  body {
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-    /* background: conic-gradient(rgba(13,82,109,0.168), rgb(36,74,77), rgba(255,255,255,0.39)); */
-    background: conic-gradient(black,rgb(59, 58, 58),white,black);
-    overflow: hidden;
-    flex-direction: row;
-    gap: 20px;
-    margin: 0;
-    padding: 0;
-  }
+  <style>
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100vw;
+      background: conic-gradient(black, rgb(59, 58, 58), white, black);
+      overflow: hidden;
+      flex-direction: row;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
 
-  /* Card shared styles */
-  .card {
-    width: 420px;
-    background: white;
-    border-radius: 12px;
-    padding: 20px 30px;
-    box-shadow: 0 0 10px rgba(0,0,0,.1);
-    text-align: left;
-  }
+    .card {
+      width: 420px;
+      background: white;
+      border-radius: 12px;
+      padding: 20px 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+      text-align: left;
+    }
 
-  .centered-card { text-align:center; }
+    .centered-card {
+      text-align: center;
+    }
 
-  h2 { margin: 0 0 12px 0; font-size: 22px; font-weight: 700; }
-  h3.section-title { font-size: 18px; margin: 18px 0 12px; }
+    h2 {
+      margin: 0 0 12px 0;
+      font-size: 22px;
+      font-weight: 700;
+    }
 
-  /* Config buttons */
-  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .btn-option {
-    padding: 12px;
-    border-radius: 8px;
-    border: 2px solid #ddd;
-    background: white;
-    font-size: 15px;
-    cursor: pointer;
-    text-align: center;
-  }
-  .btn-option.selected {
-    background: #e7e4ff;
-    border-color: #b8b3f5;
-  }
+    h3.section-title {
+      font-size: 18px;
+      margin: 18px 0 12px;
+    }
 
-  .count-row { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; }
-  .count-row .btn-option { padding:10px 18px; }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
 
-  /* Quiz area */
-  .timer-box { display:flex; align-items:center; gap:8px; border:1px solid #ddd; padding:6px 10px; border-radius:8px; background:white; }
-  #questionText { font-size:20px; font-weight:600; margin: 12px 0 18px; }
+    .btn-option {
+      padding: 12px;
+      border-radius: 8px;
+      border: 2px solid #ddd;
+      background: white;
+      font-size: 15px;
+      cursor: pointer;
+      text-align: center;
+    }
 
-  .option-item {
-    padding:12px;
-    background:#f2f2ff;
-    border-radius:8px;
-    border:1px solid #ddd;
-    font-size:15px;
-    cursor:pointer;
-  }
-  .option-item:hover { filter: brightness(.98); }
+    .btn-option.selected {
+      background: #e7e4ff;
+      border-color: #b8b3f5;
+    }
 
-  .progress { font-weight:600; }
+    .count-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
 
-  /* Result */
-  .result-title { font-size:26px; font-weight:700; margin: 8px 0; }
+    .count-row .btn-option {
+      padding: 10px 18px;
+    }
 
-  /* Small helper */
-  .muted { color:#666; font-size:14px; }
+    .timer-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #ddd;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: white;
+    }
 
-  /* responsive */
-  @media (max-width: 980px) {
-    body { padding: 20px; flex-direction: column; height: auto; align-items: stretch; }
-    .card { width: 100%; max-width: 560px; margin: 8px auto; }
-  }
-</style>
+    #questionText {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 12px 0 18px;
+    }
+
+    .option-item {
+      padding: 12px;
+      background: #f2f2ff;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .option-item:hover {
+      filter: brightness(.98);
+    }
+
+    .progress {
+      font-weight: 600;
+    }
+
+    .result-title {
+      font-size: 26px;
+      font-weight: 700;
+      margin: 8px 0;
+    }
+
+    .muted {
+      color: #666;
+      font-size: 14px;
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- CONFIGURATION CARD (no categories as you requested) -->
   <div id="configPage" class="card centered-card" style="text-align:center;">
     <h2 style="font-size:26px; margin-bottom:8px;">Quiz Configuration</h2>
 
@@ -103,12 +140,12 @@
       <button class="btn-option count-btn" data-count="10">10</button>
     </div>
 
-    <button id="startQuizBtn" style="width:150px;padding:12px;background:#6554ff;color:white;border:none;border-radius:8px;font-size:16px;cursor:pointer;">
+    <button id="startQuizBtn"
+      style="width:150px;padding:12px;background:#6554ff;color:white;border:none;border-radius:8px;font-size:16px;cursor:pointer;">
       Start Quiz
     </button>
   </div>
 
-  <!-- QUIZ CARD (hidden initially) -->
   <div id="quizPage" class="card" style="display:none;">
     <div style="display:flex; justify-content:space-between; align-items:center;">
       <h2 style="font-size:22px; margin:0;">Quiz Application</h2>
@@ -130,201 +167,203 @@
     <div style="margin-top:18px; display:flex; justify-content:space-between; align-items:center;">
       <div id="progressText" class="progress">1 of 5 Questions</div>
       <div>
-        <button id="nextBtn" style="padding:8px 20px;background:#4a3eff;color:white;border:none;border-radius:8px;cursor:pointer;font-size:15px;">
+        <button id="nextBtn"
+          style="padding:8px 20px;background:#4a3eff;color:white;border:none;border-radius:8px;cursor:pointer;font-size:15px;">
           Next <i class="ri-arrow-right-line"></i>
         </button>
       </div>
     </div>
   </div>
 
-  <!-- RESULT CARD (hidden initially) -->
   <div id="resultPage" class="card centered-card" style="display:none;">
-    <img src="https://imgs.search.brave.com/lMBooUMX88AISzbgVh5w71vMTELI1l4hOprOAUVAbOA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/dmVjdG9yc3RvY2su/Y29tL2kvNTAwcC8w/NS8wOC9wYXJ0eS1j/ZWxlYnJhdGlvbi1l/bW9qaS12ZWN0b3It/MzkzMTA1MDguanBn"
-         style="width:110px; margin-bottom:14px;" alt="celebration" />
+    <img
+      src="https://imgs.search.brave.com/lMBooUMX88AISzbgVh5w71vMTELI1l4hOprOAUVAbOA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/dmVjdG9yc3RvY2su/Y29tL2kvNTAwcC8w/NS8wOC9wYXJ0eS1j/ZWxlYnJhdGlvbi1l/bW9qaS12ZWN0b3It/MzkzMTA1MDguanBn"
+      style="width:110px; margin-bottom:14px;" alt="celebration" />
 
     <div class="result-title">Quiz Completed!</div>
     <p id="scoreText" style="margin-top:10px; font-size:16px; color:#444; line-height:22px;"></p>
 
-    <button id="restartBtn" style="margin-top:18px;padding:10px 26px;font-size:16px;border:none;background:#4a3eff;color:#fff;border-radius:8px;cursor:pointer;">
+    <button id="restartBtn"
+      style="margin-top:18px;padding:10px 26px;font-size:16px;border:none;background:#4a3eff;color:#fff;border-radius:8px;cursor:pointer;">
       Try Again
     </button>
   </div>
 
-<script>
+  <script>
 
 
-///// QUESTION BANK (global array — answers are indexes) /////
-const questions = [
-  { question: "Who is the PM of India?", options: ["Modi", "Yogi", "Shah", "Pappu"], answer: 0 },
-  { question: "2 + 2 = ?", options: ["3", "4", "5", "2"], answer: 1 },
-  { question: "Which keyword declares a variable in JS?", options: ["let", "int", "val", "define"], answer: 0 },
-  { question: "Square root of 81?", options: ["7","8","9","10"], answer: 2 },
-  { question: "Which planet is known as the Red Planet?", options: ["Earth","Venus","Mars","Jupiter"], answer: 2 },
-  { question: "HTML stands for?", options:["Hyper Text Markup Language","High Text Markup Language","Hyperlinks Text Mark Language","None"], answer: 0 },
-  { question: "Which is the largest ocean?", options:["Pacific","Atlantic","Indian","Arctic"], answer: 0 },
-  { question: "What is 5 × 6?", options:["30","11","56","26"], answer: 0 },
-  { question: "Which superhero is Iron Man?", options:["Bruce Wayne","Tony Stark","Peter Parker","Clark Kent"], answer: 1 },
-  { question: "Which symbol starts a single-line comment in JS?", options:["//","/*","<!--","##"], answer: 0 }
-];
+    ///// QUESTION BANK (global array — answers are indexes) /////
+    const questions = [
+      { question: "Who is the PM of India?", options: ["Modi", "Yogi", "Shah", "Pappu"], answer: 0 },
+      { question: "2 + 2 = ?", options: ["3", "4", "5", "2"], answer: 1 },
+      { question: "Which keyword declares a variable in JS?", options: ["let", "int", "val", "define"], answer: 0 },
+      { question: "Square root of 81?", options: ["7", "8", "9", "10"], answer: 2 },
+      { question: "Which planet is known as the Red Planet?", options: ["Earth", "Venus", "Mars", "Jupiter"], answer: 2 },
+      { question: "HTML stands for?", options: ["Hyper Text Markup Language", "High Text Markup Language", "Hyperlinks Text Mark Language", "None"], answer: 0 },
+      { question: "Which is the largest ocean?", options: ["Pacific", "Atlantic", "Indian", "Arctic"], answer: 0 },
+      { question: "What is 5 × 6?", options: ["30", "11", "56", "26"], answer: 0 },
+      { question: "Which superhero is Iron Man?", options: ["Bruce Wayne", "Tony Stark", "Peter Parker", "Clark Kent"], answer: 1 },
+      { question: "Which symbol starts a single-line comment in JS?", options: ["//", "/*", "<!--" ,"##"], answer: 0 }
+    ];
 
-///// Config selection UI logic (only question count left) /////
-let selectedCount = 5; // default selected (matches selected button)
+    let selectedCount = 5; // default selected (matches selected button)
 
-const countButtons = Array.from(document.querySelectorAll(".count-btn"));
-countButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    countButtons.forEach(b => b.classList.remove("selected"));
-    btn.classList.add("selected");
-    selectedCount = Number(btn.dataset.count);
-  });
-});
+    const countButtons = Array.from(document.querySelectorAll(".count-btn"));
+    countButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        countButtons.forEach(b => b.classList.remove("selected"));
+        btn.classList.add("selected");
+        selectedCount = Number(btn.dataset.count);
+      });
+    });
 
-///// Quiz flow variables /////
-let quizQuestions = []; // sliced array used in a run
-let currentIndex = 0;
-let score = 0;
+    ///// Quiz flow variables /////
+    let quizQuestions = []; // sliced array used in a run
+    let currentIndex = 0;
+    let score = 0;
 
-// Timer per question settings
-const timePerQuestion = 15; // seconds
-let timeLeft = timePerQuestion;
-let perQuestionTimer = null;
+    // Timer per question settings
+    const timePerQuestion = 15; // seconds
+    let timeLeft = timePerQuestion;
+    let perQuestionTimer = null;
 
-///// DOM refs /////
-const configPage = document.getElementById("configPage");
-const quizPage = document.getElementById("quizPage");
-const resultPage = document.getElementById("resultPage");
+    ///// DOM refs /////
+    const configPage = document.getElementById("configPage");
+    const quizPage = document.getElementById("quizPage");
+    const resultPage = document.getElementById("resultPage");
 
-const questionText = document.getElementById("questionText");
-const optionsBox = document.getElementById("optionsBox");
-const progressText = document.getElementById("progressText");
-const timeLeftDisplay = document.getElementById("timeLeftDisplay");
+    const questionText = document.getElementById("questionText");
+    const optionsBox = document.getElementById("optionsBox");
+    const progressText = document.getElementById("progressText");
+    const timeLeftDisplay = document.getElementById("timeLeftDisplay");
 
-const startBtn = document.getElementById("startQuizBtn");
-const nextBtn = document.getElementById("nextBtn");
-const restartBtn = document.getElementById("restartBtn");
-const scoreText = document.getElementById("scoreText");
+    const startBtn = document.getElementById("startQuizBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const restartBtn = document.getElementById("restartBtn");
+    const scoreText = document.getElementById("scoreText");
 
-///// Start Quiz /////
-startBtn.addEventListener("click", () => {
-  // Prepare quizQuestions by slicing the global questions array.
-  // If selectedCount > available questions, clamp to questions.length
-  const n = Math.min(selectedCount, questions.length);
-  quizQuestions = questions.slice(0, n);
+    ///// Start Quiz /////
+    startBtn.addEventListener("click", () => {
+      // Prepare quizQuestions by slicing the global questions array.
+      // If selectedCount > available questions, clamp to questions.length
+      const n = Math.min(selectedCount, questions.length);
+      quizQuestions = questions.slice(0, n);
 
-  // reset state
-  currentIndex = 0;
-  score = 0;
+      // reset state
+      currentIndex = 0;
+      score = 0;
 
-  // UI switch
-  configPage.style.display = "none";
-  resultPage.style.display = "none";
-  quizPage.style.display = "block";
+      // UI switch
+      configPage.style.display = "none";
+      resultPage.style.display = "none";
+      quizPage.style.display = "block";
 
-  loadQuestion(); // load first question
-});
+      loadQuestion(); // load first question
+    });
 
-///// Load a question and start per-question timer ///// 
-function loadQuestion() {
-  clearPerQuestionTimer();
-
-  const q = quizQuestions[currentIndex];
-  questionText.innerText = q.question;
-  progressText.innerText = `${currentIndex + 1} of ${quizQuestions.length} Questions`;
-
-  // Render options
-  optionsBox.innerHTML = "";
-  q.options.forEach((opt, i) => {
-    const div = document.createElement("div");
-    div.className = "option-item";
-    div.innerText = opt;
-    div.onclick = () => handleSelect(i);
-    optionsBox.appendChild(div);
-  });
-
-  // start/reset per-question timer
-  timeLeft = timePerQuestion;
-  updateTimerDisplay();
-  perQuestionTimer = setInterval(() => {
-    timeLeft--;
-    updateTimerDisplay();
-    if (timeLeft <= 0) {
+    ///// Load a question and start per-question timer ///// 
+    function loadQuestion() {
       clearPerQuestionTimer();
-      // treat as unanswered/incorrect and auto-advance
-      moveToNextOnTimeout();
+
+      const q = quizQuestions[currentIndex];
+      questionText.innerText = q.question;
+      progressText.innerText = `${currentIndex + 1} of ${quizQuestions.length} Questions`;
+
+      // Render options
+      optionsBox.innerHTML = "";
+      q.options.forEach((opt, i) => {
+        const div = document.createElement("div");
+        div.className = "option-item";
+        div.innerText = opt;
+        div.onclick = () => handleSelect(i);
+        optionsBox.appendChild(div);
+      });
+
+      // start/reset per-question timer
+      timeLeft = timePerQuestion;
+      updateTimerDisplay();
+      perQuestionTimer = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+        if (timeLeft <= 0) {
+          clearPerQuestionTimer();
+          // treat as unanswered/incorrect and auto-advance
+          moveToNextOnTimeout();
+        }
+      }, 1000);
     }
-  }, 1000);
-}
 
-function updateTimerDisplay() {
-  timeLeftDisplay.innerText = timeLeft;
-}
+    function updateTimerDisplay() {
+      timeLeftDisplay.innerText = timeLeft;
+    }
 
-function clearPerQuestionTimer() {
-  if (perQuestionTimer) {
-    clearInterval(perQuestionTimer);
-    perQuestionTimer = null;
-  }
-}
+    function clearPerQuestionTimer() {
+      if (perQuestionTimer) {
+        clearInterval(perQuestionTimer);
+        perQuestionTimer = null;
+      }
+    }
 
-///// Handle selecting an option (immediate evaluate + advance) /////
-function handleSelect(selectedIndex) {
-  clearPerQuestionTimer();
+    ///// Handle selecting an option (immediate evaluate + advance) /////
+    function handleSelect(selectedIndex) {
+      clearPerQuestionTimer();
 
-  const correctIndex = quizQuestions[currentIndex].answer;
-  if (selectedIndex === correctIndex) {
-    score++;
-  }
+      const correctIndex = quizQuestions[currentIndex].answer;
+      if (selectedIndex === correctIndex) {
+        score++;
+      }
 
-  // small visual feedback could be added; keeping simple per instructions
-  // go to next question
-  currentIndex++;
-  if (currentIndex < quizQuestions.length) {
-    loadQuestion();
-  } else {
-    endQuiz();
-  }
-}
+      // small visual feedback could be added; keeping simple per instructions
+      // go to next question
+      currentIndex++;
+      if (currentIndex < quizQuestions.length) {
+        loadQuestion();
+      } else {
+        endQuiz();
+      }
+    }
 
-///// Next button (acts as skip — advances without awarding points) /////
-nextBtn.addEventListener("click", () => {
-  // Skip current question
-  clearPerQuestionTimer();
-  currentIndex++;
-  if (currentIndex < quizQuestions.length) {
-    loadQuestion();
-  } else {
-    endQuiz();
-  }
-});
+    ///// Next button (acts as skip — advances without awarding points) /////
+    nextBtn.addEventListener("click", () => {
+      // Skip current question
+      clearPerQuestionTimer();
+      currentIndex++;
+      if (currentIndex < quizQuestions.length) {
+        loadQuestion();
+      } else {
+        endQuiz();
+      }
+    });
 
-///// When timer runs out for a question ///// 
-function moveToNextOnTimeout() {
-  // do not increment score (time out -> incorrect)
-  currentIndex++;
-  if (currentIndex < quizQuestions.length) {
-    loadQuestion();
-  } else {
-    endQuiz();
-  }
-}
+    ///// When timer runs out for a question ///// 
+    function moveToNextOnTimeout() {
+      // do not increment score (time out -> incorrect)
+      currentIndex++;
+      if (currentIndex < quizQuestions.length) {
+        loadQuestion();
+      } else {
+        endQuiz();
+      }
+    }
 
-///// End quiz and show result ///// 
-function endQuiz() {
-  clearPerQuestionTimer();
-  quizPage.style.display = "none";
-  resultPage.style.display = "block";
-  scoreText.innerHTML = `You answered <b>${score} out of ${quizQuestions.length}</b> questions correctly.`;
-}
+    ///// End quiz and show result ///// 
+    function endQuiz() {
+      clearPerQuestionTimer();
+      quizPage.style.display = "none";
+      resultPage.style.display = "block";
+      scoreText.innerHTML = `You answered <b>${score} out of ${quizQuestions.length}</b> questions correctly.`;
+    }
 
-restartBtn.addEventListener("click", () => {
-  // reload to reset everything
-  location.reload();
-});
+    restartBtn.addEventListener("click", () => {
+      // reload to reset everything
+      location.reload();
+    });
 
-///// Optionally start with configPage visible (already default) /////
+    ///// Optionally start with configPage visible (already default) /////
 
-// No auto-start. User must press Start Quiz.
-</script>
+    // No auto-start. User must press Start Quiz.
+  </script>
 
 </body>
+
 </html>
