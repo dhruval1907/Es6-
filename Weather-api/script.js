@@ -2,7 +2,7 @@ let apikey = `1cc953bb42da005a51a8ee271cc092f6`
 let apiurl = `https://api.openweathermap.org/data/2.5/weather?units=metric&q=
 
 `
-let search = document.querySelector(".search")
+let search = document.querySelector(".search input")
 let btn = document.querySelector("#btn")
 
 async function checkweather(city) {
