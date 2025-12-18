@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather UI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="weather-card" style="width: 400px;">
+
+    <!-- Search -->
+    <div class="search">
+      <input type="text" placeholder="enter city name" />
+      <button>
+        🔍
+      </button>
+    </div>
+
+    <!-- Weather Icon -->
+    <div class="icon">
+      <div class="sun"></div>
+      <div class="cloud"></div>
+      <div class="rain">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <!-- Temperature -->
+    <h1 class="temp">22°C</h1>
+    <h2 class="city" style="font-size: 30px;">New York</h2>
+
+    <!-- Info -->
+    <div class="info">
+      <div class="box">
+        <p class="value" style="font-size: 30px;">50%</p>
+        <p class="label" style="font-size: 20px;">Humidity</p>
+      </div>
+      <div class="box">
+        <p class="value" style="font-size: 30px;">15 km/h</p>
+        <p class="label" style="font-size: 20px;">Wind Speed</p>
+      </div>
+    </div>
+
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

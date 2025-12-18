@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #111;
+}
+
+.weather-card {
+  width: 320px;
+  height: 540px;
+  padding: 20px;
+  border-radius: 28px;
+  background: linear-gradient(160deg, #39d0b4, #4a78c2);
+  color: #fff;
+}
+
+/* Search */
+.search {
+  display: flex;
+  gap: 10px;
+}
+
+.search input {
+  flex: 1;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 30px;
+  outline: none;
+  font-size: 14px;
+}
+
+.search button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Icon */
+.icon {
+  margin: 40px auto 20px;
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.sun {
+  width: 40px;
+  height: 40px;
+  background: #ffd84d;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.cloud {
+  width: 80px;
+  height: 45px;
+  background: #eaf4ff;
+  border-radius: 25px;
+  position: absolute;
+  bottom: 30px;
+  left: 10px;
+}
+
+.rain span {
+  position: absolute;
+  width: 4px;
+  height: 8px;
+  background: #eaf4ff;
+  bottom: 10px;
+  border-radius: 2px;
+}
+
+.rain span:nth-child(1) { left: 20px; }
+.rain span:nth-child(2) { left: 35px; }
+.rain span:nth-child(3) { left: 50px; }
+.rain span:nth-child(4) { left: 65px; }
+.rain span:nth-child(5) { left: 20px; bottom: 0; }
+.rain span:nth-child(6) { left: 35px; bottom: 0; }
+.rain span:nth-child(7) { left: 50px; bottom: 0; }
+.rain span:nth-child(8) { left: 65px; bottom: 0; }
+
+/* Text */
+.temp {
+  text-align: center;
+  font-size: 56px;
+  margin-top: 20px;
+}
+
+.city {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+/* Info */
+.info {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.box {
+  text-align: center;
+}
+
+.value {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.label {
+  font-size: 13px;
+  opacity: 0.8;
+}
