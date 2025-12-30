@@ -19,14 +19,14 @@
 
             <form id="taskForm" class="flex flex-col gap-4">
                 <input id="title" type="text" placeholder="Task Title"
-                    class="text-lg font-normal  p-3 border-2 border-black rounded-lg" />
+                    class="text-lg font-normal  outline-none  p-3 border-2 border-black rounded-lg" />
 
                 <input id="description" type="text" placeholder="Task Description"
-                    class="text-lg font-normal  p-3 border-2 border-black rounded-lg" />
+                    class="text-lg font-normal outline-none  p-3 border-2 border-black rounded-lg" />
 
-                <input id="dueDate" type="date" class="text-lg font-normal  p-3 border-2 border-black rounded-lg" />
+                <input id="dueDate" type="date" class="text-lg outline-none font-normal  p-3 border-2 border-black rounded-lg" />
 
-                <select id="priority" class="text-lg font-normal  p-3 border-2 border-black rounded-lg">
+                <select id="priority" class="text-lg outline-none font-normal  p-3 border-2 border-black rounded-lg">
                     <option value="">Select Priority</option>
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
@@ -43,9 +43,9 @@
         <div class="h-full w-[60%] bg-white rounded-2xl p-6 overflow-y-auto"
             style="background-color: rgba(245, 245, 245, 0.239)">
             <div class="flex justify-between items-center mb-4">
-                <h2 class="text-2xl font-semibold">Your Tasks</h2>
+                <h2 class="text-2xl font-semibold text-white">Your Tasks</h2>
 
-                <select id="filterPriority" class="p-2 border-2 border-black rounded-lg">
+                <select id="filterPriority" class="p-2 border-2 outline-none  border-black rounded-lg">
                     <option value="all" class="text-">All</option>
                     <option value="low">Low</option>
                     <option value="medium">Medium</option>
@@ -128,8 +128,8 @@
           </div>
 
           <div class="flex gap-2">
-            <button onclick="editTask(${task.id})" class="bg-yellow-400 px-3 py-1 rounded">Edit</button>
-            <button onclick="deleteTask(${task.id})" class="bg-red-500 text-white px-3 py-1 rounded">Delete</button>
+            <button onclick="editTask(${task.id})" class="bg-red-300 px-3 py-1 rounded">Edit</button>
+            <button onclick="deleteTask(${task.id})" class="bg-blue-400 text-white px-3 py-1 rounded">Delete</button>
           </div>
         `;
 
@@ -166,6 +166,7 @@
                 displayTasks(filtered);
             }
         });
+
     </script>
 </body>
 
