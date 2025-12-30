@@ -8,11 +8,18 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body>
+<body style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
     <main class="h-screen w-full flex p-10 items-center justify-around"
         style="background: linear-gradient(135deg,rgb(26, 190, 179),rgb(75, 64, 64),rgb(88, 52, 59),rgb(88, 52, 59));">
-        <div class="h-full w-[35%] bg-red-400 rounded-2xl">
+        <div class="h-full w-[35%] p-10 bg-red-400 rounded-2xl">
+            <form class="flex flex-col gap-5">
+                <h1 class="text-3xl font-semibold">Task Flow</h1>
+                <div class="flex gap-3 items-center">
+                    <label for="" class="text-2xl font-semibold">Title input :  </label>
+                    <input type="text" placeholder="product name"  class="w-[35%] rounded-full p-3 font-light   border-3  border-black text-base">
+                </div>
 
+            </form>
         </div>
         <div class="h-[100%]   w-[55%] bg-blue-300 rounded-2xl" style="overflow-y: auto;">
             <div class="min-h-[100%] w-full bg-red-300">
