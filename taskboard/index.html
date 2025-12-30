@@ -1,145 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TaskFlow</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFlow</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body style="font-family: Verdana, Geneva, Tahoma, sans-serif;">
-  <main
-    class="h-screen w-full flex p-10 justify-between gap-5"
-    style="background: linear-gradient(135deg,rgb(26,190,179),rgb(75,64,64));"
-  >
+    <main class="h-screen w-full flex p-10 justify-between gap-5"
+        style="background: linear-gradient(135deg,rgb(26,190,179),rgb(75,64,64));">
 
-    <!-- LEFT : FORM -->
-    <div class="h-full w-[35%] p-8 bg-white rounded-2xl shadow-xl " style="background: linear-gradient(white,rgba(0, 0, 0, 0.01));">
-      <h1 class="text-3xl font-semibold mb-6">Task Flow</h1>
+        <!-- LEFT : FORM -->
+        <div class="h-full w-[35%] p-8 bg-white rounded-2xl shadow-xl "
+            style="background: linear-gradient(white,rgba(0, 0, 0, 0.01));">
+            <h1 class="text-3xl font-normal mb-6">Task Flow</h1>
 
-      <form id="taskForm" class="flex flex-col gap-4">
-        <input
-          id="title"
-          type="text"
-          placeholder="Task Title"
-          class="p-3 border-2 border-black rounded-lg"
-        />
+            <form id="taskForm" class="flex flex-col gap-4">
+                <input id="title" type="text" placeholder="Task Title"
+                    class="text-lg font-normal  p-3 border-2 border-black rounded-lg" />
 
-        <input
-          id="description"
-          type="text"
-          placeholder="Task Description"
-          class="p-3 border-2 border-black rounded-lg"
-        />
+                <input id="description" type="text" placeholder="Task Description"
+                    class="text-lg font-normal  p-3 border-2 border-black rounded-lg" />
 
-        <input
-          id="dueDate"
-          type="date"
-          class="p-3 border-2 border-black rounded-lg"
-        />
+                <input id="dueDate" type="date" class="text-lg font-normal  p-3 border-2 border-black rounded-lg" />
 
-        <select
-          id="priority"
-          class="p-3 border-2 border-black rounded-lg"
-        >
-          <option value="">Select Priority</option>
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
-        </select>
+                <select id="priority" class="text-lg font-normal  p-3 border-2 border-black rounded-lg">
+                    <option value="">Select Priority</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
 
-        <button
-          type="submit"
-          class="bg-black text-white p-3 rounded-lg font-semibold"
-        >
-          Save Task
-        </button>
-      </form>
-    </div>
+                <button type="submit" class="bg-black text-white p-3 rounded-lg font-semibold">
+                    Save Task
+                </button>
+            </form>
+        </div>
 
-    <!-- RIGHT : TASK LIST -->
-    <div class="h-full w-[60%] bg-white rounded-2xl p-6 overflow-y-auto" style="background-color: rgba(245, 245, 245, 0.239)">
-      <div class="flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-semibold">Your Tasks</h2>
+        <!-- RIGHT : TASK LIST -->
+        <div class="h-full w-[60%] bg-white rounded-2xl p-6 overflow-y-auto"
+            style="background-color: rgba(245, 245, 245, 0.239)">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-semibold">Your Tasks</h2>
 
-        <select
-          id="filterPriority"
-          class="p-2 border-2 border-black rounded-lg"
-        >
-          <option value="all" class="text-">All</option>
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
-        </select>
-      </div>
+                <select id="filterPriority" class="p-2 border-2 border-black rounded-lg">
+                    <option value="all" class="text-">All</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
 
-      <div id="taskList" class="flex flex-col gap-4"></div>
-    </div>
-  </main>
+            <div id="taskList" class="flex flex-col gap-4"></div>
+        </div>
+    </main>
 
-  <script>
-    let tasks = [];
-    let editId = null;
+    <script>
+        let tasks = [];
+        let editId = null;
 
-    // LOAD FROM LOCAL STORAGE
-    window.onload = () => {
-      tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-      displayTasks(tasks);
-    };
-
-    // SAVE TASK
-    document.getElementById("taskForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const title = document.getElementById("title").value.trim();
-      const description = document.getElementById("description").value.trim();
-      const dueDate = document.getElementById("dueDate").value;
-      const priority = document.getElementById("priority").value;
-
-      if (!title || !dueDate) {
-        alert("Title and Due Date are required");
-        return;
-      }
-
-      if (editId) {
-        tasks = tasks.map(task =>
-          task.id === editId
-            ? { ...task, title, description, dueDate, priority }
-            : task
-        );
-        editId = null;
-      } else {
-        const task = {
-          id: Date.now(),
-          title,
-          description,
-          dueDate,
-          priority,
+        // LOAD FROM LOCAL STORAGE
+        window.onload = () => {
+            tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            displayTasks(tasks);
         };
-        tasks.push(task);
-      }
 
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-      displayTasks(tasks);
-      this.reset();
-    });
+        // SAVE TASK
+        document.getElementById("taskForm").addEventListener("submit", function (e) {
+            e.preventDefault();
 
-    // DISPLAY TASKS
-    function displayTasks(taskArray) {
-      const taskList = document.getElementById("taskList");
-      taskList.innerHTML = "";
+            const title = document.getElementById("title").value.trim();
+            const description = document.getElementById("description").value.trim();
+            const dueDate = document.getElementById("dueDate").value;
+            const priority = document.getElementById("priority").value;
 
-      if (taskArray.length === 0) {
-        taskList.innerHTML = "<p>No tasks available</p>";
-        return;
-      }
+            if (!title || !dueDate) {
+                alert("Title and Due Date are required");
+                return;
+            }
 
-      taskArray.forEach(task => {
-        const div = document.createElement("div");
-        div.className =
-          "border-2 border-black p-4 rounded-xl flex justify-between items-start";
+            if (editId) {
+                tasks = tasks.map(task =>
+                    task.id === editId
+                        ? { ...task, title, description, dueDate, priority }
+                        : task
+                );
+                editId = null;
+            } else {
+                const task = {
+                    id: Date.now(),
+                    title,
+                    description,
+                    dueDate,
+                    priority,
+                };
+                tasks.push(task);
+            }
 
-        div.innerHTML = `
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            displayTasks(tasks);
+            this.reset();
+        });
+
+        // DISPLAY TASKS
+        function displayTasks(taskArray) {
+            const taskList = document.getElementById("taskList");
+            taskList.innerHTML = "";
+
+            if (taskArray.length === 0) {
+                taskList.innerHTML = "<p>No tasks available</p>";
+                return;
+            }
+
+            taskArray.forEach(task => {
+                const div = document.createElement("div");
+                div.className =
+                    "border-2 border-black p-4 rounded-xl flex justify-between items-start";
+
+                div.innerHTML = `
           <div>
             <h3 class="text-xl font-semibold">${task.title}</h3>
             <p>${task.description || ""}</p>
@@ -153,39 +133,40 @@
           </div>
         `;
 
-        taskList.appendChild(div);
-      });
-    }
+                taskList.appendChild(div);
+            });
+        }
 
-    // DELETE TASK
-    function deleteTask(id) {
-      tasks = tasks.filter(task => task.id !== id);
-      localStorage.setItem("tasks", JSON.stringify(tasks));
-      displayTasks(tasks);
-    }
+        // DELETE TASK
+        function deleteTask(id) {
+            tasks = tasks.filter(task => task.id !== id);
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+            displayTasks(tasks);
+        }
 
-    // EDIT TASK
-    function editTask(id) {
-      const task = tasks.find(t => t.id === id);
+        // EDIT TASK
+        function editTask(id) {
+            const task = tasks.find(t => t.id === id);
 
-      document.getElementById("title").value = task.title;
-      document.getElementById("description").value = task.description;
-      document.getElementById("dueDate").value = task.dueDate;
-      document.getElementById("priority").value = task.priority;
+            document.getElementById("title").value = task.title;
+            document.getElementById("description").value = task.description;
+            document.getElementById("dueDate").value = task.dueDate;
+            document.getElementById("priority").value = task.priority;
 
-      editId = id;
-    }
+            editId = id;
+        }
 
-    // FILTER
-    document.getElementById("filterPriority").addEventListener("change", function () {
-      const value = this.value;
-      if (value === "all") {
-        displayTasks(tasks);
-      } else {
-        const filtered = tasks.filter(task => task.priority === value);
-        displayTasks(filtered);
-      }
-    });
-  </script>
+        // FILTER
+        document.getElementById("filterPriority").addEventListener("change", function () {
+            const value = this.value;
+            if (value === "all") {
+                displayTasks(tasks);
+            } else {
+                const filtered = tasks.filter(task => task.priority === value);
+                displayTasks(filtered);
+            }
+        });
+    </script>
 </body>
+
 </html>
