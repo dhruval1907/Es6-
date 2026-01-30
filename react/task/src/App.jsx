@@ -1,27 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from './components/Card'
 
 const App = () => {
-
-  const [task, settask] = useState("", () => {
-    const saved = localStorage.getItem('tasks')
-    return saved? JSON.parse(saved):[]
-  })
-  const [description, setDescription] = useState("")
-  const [alldata, setalldata] = useState(() => {
+// state for svaing the data
+const [task, settask] = useState("")
+const [description, setDescription] = useState("")
+const [alldata, setalldata] = useState(() => {
     const savedData = localStorage.getItem("tasks")
     return savedData ? JSON.parse(savedData) : []
   })
-
-
+  
+  
+  // form handler 
   function formHandler(e) {
     e.preventDefault()
     const allData = {
-      id: Date.now() ,
+      id: Date.now(),
       task,
       description
     }
-
+    
     setalldata((prev) => {
       return [...prev, allData]
     })
@@ -29,12 +27,18 @@ const App = () => {
     settask("")
     setDescription("")
   }
-
+  
+  // delete karne ke liye
   function deleteTask(id) {
     setalldata(prev => prev.filter(item => item.id !== id))
   }
-
-
+  
+  // local me save
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(alldata))
+  }, [alldata])
+  
+  // UI and input me save karne ke liye
   return (
     <div className='h-screen w-full ' style={{ background: "linear-gradient( to top,white,lightblue,crimson)" }}>
       <div className='main w-full h-screen flex justify-around' style={{ padding: "2rem" }}>
