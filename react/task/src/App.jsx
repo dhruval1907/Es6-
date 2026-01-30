@@ -70,8 +70,8 @@ const App = () => {
         </div>
         <div className='left w-[40%] h-full bg-zinc-400 rounded overflow-y-auto flex flex-wrap justify-evenly sh' style={{ paddingTop: "20px" }}>
           <div className='overflow-y-auto w-full flex justify-evenly gap-2 flex-wrap shrink-0'>
-            {alldata.map((value,indx) => {
-              return <Card key={indx} data={alldata} />
+            {alldata.map((item) => {
+              return <Card key={item.id} data={item} />
             })}
           </div>
         </div>
