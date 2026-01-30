@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import Card from './components/Card'
 
 const App = () => {
 
-  const [task, settask] = useState([])
-  const [description, setDescription] = useState([])
+  const [task, settask] = useState("", () => {
+    const saved = localStorage.getItem('task')
+    return saved ? JSON.parse(saved) : []
+  })
+  const [description, setDescription] = useState("")
   const [alldata, setalldata] = useState([])
 
   function formHandler(e) {
@@ -21,17 +24,6 @@ const App = () => {
     setDescription("")
   }
 
-  useEffect(() => {
-    const savedData = localStorage.getItem("tasks")
-
-    if (savedData) {
-      setalldata(JSON.parse(savedData))
-    }
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem("tasks", JSON.stringify(alldata))
-  }, [alldata])
 
 
   return (
@@ -48,6 +40,7 @@ const App = () => {
             <div className='flex items-center gap-6'>
               <label htmlFor="" className='text-red-100 font-bold'>Add a task  :          </label>
               <input
+                value={task}
                 onChange={(e) => {
                   settask(e.target.value)
                 }}
@@ -57,6 +50,7 @@ const App = () => {
             <div className='flex items-start gap-5'>
               <label htmlFor="" className='text-red-100 font-bold'>  Description     :          </label>
               <textarea
+                value={description}
                 onChange={(e) => {
                   setDescription(e.target.value)
                 }}
@@ -70,7 +64,7 @@ const App = () => {
         </div>
         <div className='left w-[40%] h-full bg-zinc-400 rounded overflow-y-auto flex flex-wrap justify-evenly sh' style={{ paddingTop: "20px" }}>
           <div className='overflow-y-auto w-full flex justify-evenly gap-2 flex-wrap shrink-0'>
-            {alldata.map((item,indx) => {
+            {alldata.map((item, indx) => {
               return <Card key={indx} data={item} />
             })}
           </div>
