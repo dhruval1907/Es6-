@@ -1,4 +1,4 @@
-import React, {  useState } from 'react'
+import React, { useState } from 'react'
 import Card from './components/Card'
 
 const App = () => {
@@ -8,7 +8,11 @@ const App = () => {
     return saved ? JSON.parse(saved) : []
   })
   const [description, setDescription] = useState("")
-  const [alldata, setalldata] = useState([])
+  const [alldata, setalldata] = useState(() => {
+    const savedData = localStorage.getItem("tasks")
+    return savedData ? JSON.parse(savedData) : []
+  })
+
 
   function formHandler(e) {
     e.preventDefault()
@@ -23,8 +27,6 @@ const App = () => {
     settask("")
     setDescription("")
   }
-
-
 
   return (
     <div className='h-screen w-full ' style={{ background: "linear-gradient( to top,white,lightblue,crimson)" }}>
@@ -57,8 +59,9 @@ const App = () => {
                 name="" id="" className='border-2 w-43  border-red-200 rounded text-white font-semibold h-20'></textarea>
             </div>
             <br /> <br />
-            <div className='flex items-center w-full justify-center'>
+            <div className='flex items-center w-full justify-evenly'>
               <button className='active:scale-95   bg-zinc-400 rounded font-bold ' style={{ padding: "0.7rem 2.5rem" }}>Submit</button>
+              <button className='active:scale-95   bg-zinc-400 rounded font-bold ' style={{ padding: "0.7rem 2.5rem" }} >Delete</button>
             </div>
           </form>
         </div>
