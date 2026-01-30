@@ -4,8 +4,8 @@ import Card from './components/Card'
 const App = () => {
 
   const [task, settask] = useState("", () => {
-    const saved = localStorage.getItem('task')
-    return saved ? JSON.parse(saved) : []
+    const saved = localStorage.getItem('tasks')
+    return saved? JSON.parse(saved):[]
   })
   const [description, setDescription] = useState("")
   const [alldata, setalldata] = useState(() => {
@@ -17,9 +17,11 @@ const App = () => {
   function formHandler(e) {
     e.preventDefault()
     const allData = {
+      id: Date.now() ,
       task,
       description
     }
+
     setalldata((prev) => {
       return [...prev, allData]
     })
@@ -27,6 +29,11 @@ const App = () => {
     settask("")
     setDescription("")
   }
+
+  function deleteTask(id) {
+    setalldata(prev => prev.filter(item => item.id !== id))
+  }
+
 
   return (
     <div className='h-screen w-full ' style={{ background: "linear-gradient( to top,white,lightblue,crimson)" }}>
@@ -61,14 +68,13 @@ const App = () => {
             <br /> <br />
             <div className='flex items-center w-full justify-evenly'>
               <button className='active:scale-95   bg-zinc-400 rounded font-bold ' style={{ padding: "0.7rem 2.5rem" }}>Submit</button>
-              <button className='active:scale-95   bg-zinc-400 rounded font-bold ' style={{ padding: "0.7rem 2.5rem" }} >Delete</button>
             </div>
           </form>
         </div>
         <div className='left w-[40%] h-full bg-zinc-400 rounded overflow-y-auto flex flex-wrap justify-evenly sh' style={{ paddingTop: "20px" }}>
           <div className='overflow-y-auto w-full flex justify-evenly gap-2 flex-wrap shrink-0'>
             {alldata.map((item, indx) => {
-              return <Card key={indx} data={item} />
+              return <Card key={indx} data={item} onDelete={deleteTask} />
             })}
           </div>
         </div>
