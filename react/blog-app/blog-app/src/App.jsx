@@ -1,27 +1,26 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import Posts from "./pages/Posts";
 import PostDetail from "./pages/PostDetail";
-import CreatePost from "./pages/CreatePost";
+import Write from "./pages/Write";
+import About from "./pages/About";
 
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      <div className="flex flex-col min-h-screen">
         <Navbar />
-
-        <div className="max-w-7xl mx-auto px-6 py-10">
+        <div className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/posts" element={<Posts />} />
             <Route path="/post/:id" element={<PostDetail />} />
-            <Route path="/create" element={<CreatePost />} />
+            <Route path="/write" element={<Write />} />
+            <Route path="/about" element={<About />} />
           </Routes>
         </div>
+        <Footer />
       </div>
     </BrowserRouter>
   );
 }
-
-export default App;
