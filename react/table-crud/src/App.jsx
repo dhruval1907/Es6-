@@ -40,7 +40,6 @@ const App = () => {
     });
   }, []);
 
-  // ✅ CREATE + UPDATE
   const handleForm = (e) => {
     e.preventDefault();
 
@@ -61,13 +60,11 @@ const App = () => {
     setemail("");
   };
 
-  // ✅ DELETE
   const handleDelete = (index) => {
     const filtered = data.filter((_, i) => i !== index);
     setData(filtered);
   };
 
-  // ✅ EDIT
   const handleEdit = (index) => {
     const item = data[index];
     setname(item.name);
@@ -75,7 +72,6 @@ const App = () => {
     setEditIndex(index);
   };
 
-  // ✅ CANCEL EDIT
   const handleCancel = () => {
     setname("");
     setemail("");
@@ -131,7 +127,7 @@ const App = () => {
             />
           </div>
 
-          {/* ✅ BUTTONS */}
+          {/*  BUTTONS */}
           <div className='flex gap-4'>
             <button className='h-[40px] w-[100px] bg-gray-300/50 rounded-2xl'>
               {editIndex !== null ? "Update" : "Submit"}
